@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#09090d"><title>B_K WORLD — Create. Connect. Discover.</title>
+<link rel="stylesheet" href="styles.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#"><img src="assets/bk-logo.png" alt="B_K logo"><span>B_K <b>WORLD</b></span></a>
+  <div class="search"><span>⌕</span><input id="searchInput" placeholder="Search people and posts"></div>
+  <div class="top-actions"><button id="themeBtn" class="iconbtn" title="Toggle theme">◐</button><button id="authOpen" class="primary">Log in / Sign up</button><button id="logoutBtn" class="ghost hidden">Log out</button></div>
+</header>
+<div class="layout">
+<aside class="sidebar">
+  <div class="user-mini"><div class="avatar" id="sideAvatar">B</div><div><b id="sideName">Welcome</b><small id="sideHandle">@guest</small></div></div>
+  <nav>
+    <button class="nav active" data-view="home">⌂ <span>Home feed</span></button>
+    <button class="nav" data-view="explore">⌕ <span>Explore</span></button>
+    <button class="nav" data-view="reels">▣ <span>Reels & videos</span></button>
+    <button class="nav" data-view="messages">✉ <span>Messages</span></button>
+    <button class="nav" data-view="notifications">♧ <span>Notifications</span></button>
+    <button class="nav" data-view="profile">◎ <span>My profile</span></button>
+    <button class="nav" data-view="settings">⚙ <span>Settings</span></button>
+  </nav>
+  <div class="sidebar-note"><b>B_K WORLD</b><p>Create. Connect. Discover.</p><small>Community guidelines · Privacy</small></div>
+</aside>
+<main id="main">
+  <section class="welcome">
+    <div><p class="eyebrow">YOUR WORLD. YOUR VOICE.</p><h1>Make your moment <span>matter.</span></h1><p>Share ideas, photos and videos. Find your people and discover something new.</p><button class="primary" id="startPost">＋ Create post</button></div>
+    <img src="assets/bk-logo.png" alt="" class="hero-logo">
+  </section>
+  <section class="composer card">
+    <div class="avatar">B</div><button id="composerOpen" class="fake-input">What's happening in your world?</button><button id="composerMedia" class="media-btn">＋ Media</button>
+  </section>
+  <div class="feed-head"><h2>Community feed</h2><select id="feedSort"><option value="latest">Latest</option><option value="popular">Popular</option></select></div>
+  <div id="feed" class="feed"></div>
+</main>
+<aside class="rightbar">
+  <div class="card trends"><h3>Trending now</h3><div><small>COMMUNITY</small><b>#BKWorld</b><span>Share your first post</span></div><div><small>CREATORS</small><b>Creator spotlight</b><span>Discover new voices</span></div><div><small>DISCOVER</small><b>What's new?</b><span>Explore the community</span></div></div>
+  <div class="card safety"><h3>Keep it positive</h3><p>Be respectful, protect personal information, and report content that breaks community rules.</p><button class="textbtn" data-view="settings">Safety & privacy →</button></div>
+  <p class="copyright">© 2026 B_K WORLD</p>
+</aside>
+</div>
+
+<dialog id="authDialog" class="modal"><form method="dialog"><button class="close">×</button></form><div class="modal-logo">B_K WORLD</div><h2 id="authTitle">Welcome to your world</h2><p class="muted">Create an account or log in to join the community.</p>
+<form id="authForm"><label>Display name<input id="authName" placeholder="Your name"></label><label>Email<input id="authEmail" type="email" required placeholder="you@example.com"></label><label>Password<input id="authPassword" type="password" minlength="6" required placeholder="At least 6 characters"></label><button class="primary full" id="authSubmit">Create account</button></form>
+<button id="switchAuth" class="textbtn full">Already have an account? Log in</button><p id="authMessage" class="status"></p></dialog>
+
+<dialog id="postDialog" class="modal"><form method="dialog"><button class="close">×</button></form><h2>Create a post</h2><form id="postForm"><textarea id="postText" rows="5" placeholder="What's happening in your world?"></textarea><label class="upload">Add photo or video <input id="postFile" type="file" accept="image/*,video/*"></label><small class="muted">Maximum upload size: 50 MB. Sign in and configure Supabase Storage for cloud uploads.</small><button class="primary full">Publish post</button></form><p id="postMessage" class="status"></p></dialog>
+
+<dialog id="profileDialog" class="modal"><form method="dialog"><button class="close">×</button></form><h2>Edit profile</h2><form id="profileForm"><label>Display name<input id="editName" maxlength="40"></label><label>Username<input id="editUsername" maxlength="24"></label><label>Bio<textarea id="editBio" rows="3" maxlength="160"></textarea></label><button class="primary full">Save profile</button></form><p id="profileMessage" class="status"></p></dialog>
+<div id="toast" role="status"></div>
+<script src="app.js"></script>
+</body></html>
